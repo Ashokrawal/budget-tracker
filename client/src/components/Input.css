@@ -1,0 +1,52 @@
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151; /* Dark gray */
+  margin-bottom: 2px;
+  text-align: left;
+}
+
+.custom-input {
+  /* This makes it a solid, visible box */
+  display: block;
+  width: 100%;
+  padding: 4px 6px;
+  background-color: #ffffff;
+
+  /* The Border: Using a darker gray (#9ca3af) to ensure visibility */
+  border: 2px solid #9ca3af !important;
+  border-radius: 10px;
+
+  /* Professional Polish */
+  font-size: 16px;
+  color: #111827;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+  box-sizing: border-box; /* Critical for responsiveness */
+}
+
+.custom-input:focus {
+  outline: none;
+  border-color: #667eea !important;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+}
+
+.input-error {
+  border-color: #ef4444 !important;
+}
+
+.error-text {
+  color: #ef4444;
+  font-size: 12px;
+  margin-top: 4px;
+  text-align: left;
+}
