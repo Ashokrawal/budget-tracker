@@ -128,27 +128,26 @@ router.get(
 router.get("/google/callback", (req, res, next) => {
   passport.authenticate("google", { session: false }, (err, user, info) => {
     if (err || !user) {
-      // If error, send back to login page
       return res.redirect(
-        `${process.env.CLIENT_URL || "https://budget-tracker-bhvh.vercel.app"}/login?error=google_auth_failed`,
+        "https://budget-tracker-bhvh.vercel.app/login?error=auth_failed",
       );
     }
 
-    // Success logic
     const token = generateToken(user);
 
-    // Explicitly define the frontend URL with a fallback
-    const frontendURL =
+    // FORCE HTTPS to prevent Express from treating this as a relative path
+    let frontendURL =
       process.env.CLIENT_URL || "https://budget-tracker-bhvh.vercel.app";
 
-    // Ensure there are no trailing slashes causing double // in the URL
-    const cleanURL = frontendURL.endsWith("/")
-      ? frontendURL.slice(0, -1)
-      : frontendURL;
+    // Safety check: if for some reason the env var doesn't have https, add it
+    if (!frontendURL.startsWith("http")) {
+      frontendURL = `https://${frontendURL}`;
+    }
 
+    const cleanURL = frontendURL.replace(/\/$/, "");
     const redirectUrl = `${cleanURL}/auth/success?token=${token}`;
 
-    console.log("✅ Success! Redirecting to:", redirectUrl);
+    console.log("🚀 Absolute Redirecting to:", redirectUrl);
     res.redirect(redirectUrl);
   })(req, res, next);
 });
