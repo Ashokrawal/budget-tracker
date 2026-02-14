@@ -18,9 +18,6 @@ const generateToken = (user) => {
   );
 };
 
-// @route   POST /api/auth/register
-// @desc    Register new user
-// @access  Public
 router.post("/register", async (req, res) => {
   try {
     const { email, password, name } = req.body;
@@ -70,9 +67,6 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// @route   POST /api/auth/login
-// @desc    Login user
-// @access  Public
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -121,9 +115,6 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// @route   GET /api/auth/google
-// @desc    Authenticate with Google
-// @access  Public
 router.get(
   "/google",
   passport.authenticate("google", {
@@ -136,33 +127,32 @@ router.get(
 
 router.get("/google/callback", (req, res, next) => {
   passport.authenticate("google", { session: false }, (err, user, info) => {
-    // 1. Check for system errors (like network/database issues)
-    if (err) {
-      console.error("❌ Passport System Error:", err);
-      return res.status(500).send(`Auth Error: ${err.message}`);
+    if (err || !user) {
+      // If error, send back to login page
+      return res.redirect(
+        `${process.env.CLIENT_URL || "https://budget-tracker-bhvh.vercel.app"}/login?error=google_auth_failed`,
+      );
     }
 
-    // 2. Check for OAuth failures (like invalid client secret or disabled People API)
-    if (!user) {
-      console.error("❌ Google Auth Failed. Info:", info);
-      // This will print the error to your browser screen so you can read it!
-      return res.status(401).json({
-        message: "Google Authentication Failed",
-        reason: info?.message || "Check your Google Cloud Console settings",
-      });
-    }
-
-    // 3. Success logic
+    // Success logic
     const token = generateToken(user);
-    const redirectUrl = `${process.env.CLIENT_URL}/auth/success?token=${token}`;
+
+    // Explicitly define the frontend URL with a fallback
+    const frontendURL =
+      process.env.CLIENT_URL || "https://budget-tracker-bhvh.vercel.app";
+
+    // Ensure there are no trailing slashes causing double // in the URL
+    const cleanURL = frontendURL.endsWith("/")
+      ? frontendURL.slice(0, -1)
+      : frontendURL;
+
+    const redirectUrl = `${cleanURL}/auth/success?token=${token}`;
+
     console.log("✅ Success! Redirecting to:", redirectUrl);
     res.redirect(redirectUrl);
   })(req, res, next);
 });
 
-// @route   GET /api/auth/me
-// @desc    Get current user
-// @access  Private
 router.get("/me", authMiddleware, async (req, res) => {
   try {
     const user = await User.findById(req.user.userId).select("-password");
@@ -173,9 +163,6 @@ router.get("/me", authMiddleware, async (req, res) => {
   }
 });
 
-// @route   POST /api/auth/logout
-// @desc    Logout user (client-side removes token)
-// @access  Private
 router.post("/logout", authMiddleware, (req, res) => {
   res.json({ message: "Logged out successfully" });
 });
