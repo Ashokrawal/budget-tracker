@@ -7,8 +7,10 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      // CRITICAL: Ensure this EXACT URL is in your Google Cloud Console
-      callbackURL: "http://localhost:5001/api/auth/google/callback",
+      // ✅ CHANGE THIS: Use the environment variable or the Vercel URL
+      callbackURL:
+        process.env.GOOGLE_CALLBACK_URL ||
+        "https://budget-tracker-lilac-gamma.vercel.app/api/auth/google/callback",
       proxy: true,
     },
     async (accessToken, refreshToken, profile, done) => {
