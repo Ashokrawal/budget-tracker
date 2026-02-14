@@ -16,10 +16,16 @@ const PORT = process.env.PORT || 5001;
 // 1. Middleware
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:3000",
+    // Add https:// and consider allowing localhost for testing
+    origin: [
+      process.env.CLIENT_URL,
+      "https://budget-tracker-bhvh.vercel.app",
+      "http://localhost:3000",
+    ],
     credentials: true,
   }),
 );
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -52,3 +58,5 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+module.exports = app;
