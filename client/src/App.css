@@ -5,15 +5,17 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
   min-height: 100vh;
   background-attachment: fixed;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 .App {
   min-height: 100vh;
   padding: 20px;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 .app-header {
@@ -174,7 +176,7 @@ body {
   .app-header h1 {
     font-size: 36px;
   }
-  
+
   .progress-section {
     padding: 30px;
   }
@@ -182,34 +184,34 @@ body {
 
 @media (max-width: 768px) {
   .app-header {
-    margin-bottom: 30px;
-    padding: 20px 0;
+    margin-bottom: 25px;
+    padding: 15px 0;
   }
-  
+
   .app-header h1 {
     font-size: 32px;
   }
-  
+
   .tagline {
     font-size: 16px;
   }
-  
+
   .main-content {
-    gap: 20px;
+    gap: 15px;
   }
-  
+
   .progress-section {
-    padding: 25px;
+    padding: 20px;
   }
-  
+
   .summary-value {
     font-size: 24px;
   }
-  
+
   .summary-label {
     font-size: 12px;
   }
-  
+
   .category-name,
   .category-amount {
     font-size: 15px;
@@ -232,28 +234,28 @@ body {
   .progress-section,
   .budget-builder,
   .transaction-tracker {
-    padding: 20px;
+    padding: 15px;
   }
 
   .budget-summary {
     flex-direction: column;
-    gap: 15px;
-    padding: 15px 0;
+    gap: 12px;
+    padding: 12px 0;
   }
-  
+
   .summary-value {
     font-size: 22px;
   }
-  
+
   .category-breakdown h3 {
     font-size: 18px;
   }
-  
+
   .category-name,
   .category-amount {
     font-size: 14px;
   }
-  
+
   .category-item {
     padding: 10px 12px;
   }
@@ -263,80 +265,84 @@ body {
   .App {
     padding: 8px;
   }
-  
+
   .app-header {
-    margin-bottom: 20px;
-    padding: 15px 0;
+    margin-bottom: 15px;
+    padding: 12px 0;
   }
-  
+
   .app-header h1 {
     font-size: 24px;
   }
-  
+
   .tagline {
     font-size: 13px;
   }
-  
+
   .main-content {
-    gap: 15px;
-    margin-bottom: 20px;
+    gap: 12px;
+    margin-bottom: 15px;
   }
-  
+
   .progress-section {
-    padding: 15px;
+    padding: 12px;
   }
-  
+
   .budget-summary {
-    margin-top: 20px;
-    padding: 10px 0;
+    margin-top: 15px;
+    padding: 8px 0;
   }
-  
+
   .summary-label {
     font-size: 11px;
   }
-  
+
   .summary-value {
     font-size: 20px;
   }
-  
+
   .category-breakdown {
-    margin-top: 20px;
+    margin-top: 15px;
   }
-  
+
   .category-breakdown h3 {
     font-size: 16px;
-    margin-bottom: 10px;
-  }
-  
-  .category-item {
-    padding: 8px 10px;
     margin-bottom: 8px;
   }
-  
+
+  .category-item {
+    padding: 8px 10px;
+    margin-bottom: 6px;
+  }
+
   .category-name,
   .category-amount {
     font-size: 13px;
   }
-  
+
   .app-footer {
-    padding: 20px 0;
+    padding: 15px 0;
     font-size: 12px;
   }
 }
 
 @media (max-width: 360px) {
+  .App {
+    padding: 5px;
+  }
+
   .app-header h1 {
     font-size: 22px;
   }
-  
+
   .tagline {
     font-size: 12px;
   }
-  
+
   .summary-value {
     font-size: 18px;
   }
-  
+
   .category-name,
   .category-amount {
     font-size: 12px;

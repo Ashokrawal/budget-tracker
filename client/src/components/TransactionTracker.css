@@ -4,7 +4,6 @@
   padding: 30px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   max-width: 700px;
-  min-width: 500px;
   width: 100%;
   margin: 30px auto;
 }
@@ -76,7 +75,12 @@
   font-size: 14px;
   box-sizing: border-box;
   transition: all 0.3s ease;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.transaction-form input::placeholder {
+  color: #bbb;
+  opacity: 1;
 }
 
 .transaction-form input:focus,
@@ -222,14 +226,14 @@
 
 @media (max-width: 768px) {
   .transaction-tracker {
-    min-width: unset;
     width: 100%;
+    padding: 20px;
   }
-  
+
   .tracker-header h2 {
     font-size: 24px;
   }
-  
+
   .add-btn {
     font-size: 13px;
     padding: 8px 16px;
@@ -239,58 +243,58 @@
 @media (max-width: 600px) {
   .form-row {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
-  
+
   .transaction-tracker {
-    min-width: unset;
     width: 100%;
-    padding: 20px;
+    padding: 15px;
   }
-  
+
   .tracker-header {
     flex-wrap: wrap;
     gap: 10px;
   }
-  
+
   .tracker-header h2 {
     font-size: 22px;
   }
-  
+
   .transaction-form {
-    padding: 15px;
+    padding: 12px;
   }
-  
+
   .transaction-form label {
     font-size: 13px;
   }
-  
+
   .transaction-form input,
   .transaction-form select {
     font-size: 14px;
     padding: 9px 10px;
   }
-  
+
   .transaction-item {
     padding: 12px;
   }
-  
+
   .transaction-icon {
     font-size: 24px;
   }
-  
+
   .transaction-description {
     font-size: 15px;
   }
-  
+
   .transaction-meta {
     font-size: 11px;
   }
-  
+
   .transaction-amount {
     font-size: 16px;
     min-width: 80px;
   }
-  
+
   .delete-btn {
     width: 28px;
     height: 28px;
@@ -300,83 +304,92 @@
 
 @media (max-width: 480px) {
   .transaction-tracker {
-    padding: 15px;
-    margin: 20px auto;
+    padding: 12px;
+    margin: 15px auto;
   }
-  
+
   .tracker-header {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
-  
+
   .tracker-header h2 {
     font-size: 20px;
     width: 100%;
   }
-  
+
   .add-btn {
     width: 100%;
-    margin-top: 10px;
+    margin-top: 8px;
   }
-  
+
   .transaction-form {
-    padding: 12px;
-    margin-bottom: 20px;
+    padding: 10px;
+    margin-bottom: 15px;
   }
-  
+
+  .form-row {
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
   .transaction-form .submit-btn {
     padding: 10px;
     font-size: 15px;
   }
-  
+
   .transaction-item {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
-    padding: 12px;
+    padding: 10px;
   }
-  
+
   .transaction-info {
     width: 100%;
-    gap: 12px;
+    gap: 10px;
   }
-  
+
   .transaction-right {
     width: 100%;
     justify-content: space-between;
   }
-  
+
   .transaction-amount {
     min-width: auto;
   }
-  
+
   .no-transactions {
-    padding: 30px 15px;
+    padding: 25px 12px;
     font-size: 15px;
   }
 }
 
 @media (max-width: 360px) {
+  .transaction-tracker {
+    padding: 10px;
+  }
+
   .tracker-header h2 {
     font-size: 18px;
   }
-  
+
   .add-btn {
     font-size: 12px;
     padding: 8px 12px;
   }
-  
+
   .transaction-icon {
     font-size: 22px;
   }
-  
+
   .transaction-description {
     font-size: 14px;
   }
-  
+
   .transaction-amount {
     font-size: 15px;
   }
-  
+
   .delete-btn {
     width: 26px;
     height: 26px;

@@ -5,7 +5,6 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   color: white;
   max-width: 500px;
-  min-width: 400px;
   width: 100%;
   margin: 0 auto;
 }
@@ -48,7 +47,13 @@
   color: #333;
   box-sizing: border-box;
   transition: all 0.3s ease;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Make placeholder clearly distinct from real values */
+.form-group input::placeholder {
+  color: #bbb;
+  opacity: 1; /* Firefox reduces opacity by default */
 }
 
 .form-group input:focus {
@@ -104,38 +109,37 @@
 
 @media (max-width: 600px) {
   .budget-builder {
-    min-width: unset;
     width: 100%;
-    padding: 20px;
+    padding: 15px;
   }
-  
+
   .budget-builder h2 {
     font-size: 24px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
   }
-  
+
   .budget-builder h3 {
     font-size: 16px;
   }
-  
+
   .form-group label {
     font-size: 15px;
   }
-  
+
   .form-group input {
     font-size: 15px;
     padding: 10px 12px;
   }
-  
+
   .categories-section {
-    padding: 15px;
+    padding: 12px;
   }
-  
+
   .allocation-status {
     font-size: 14px;
     padding: 12px;
   }
-  
+
   .submit-btn {
     font-size: 16px;
     padding: 12px;
@@ -144,63 +148,69 @@
 
 @media (max-width: 480px) {
   .budget-builder {
-    padding: 15px;
+    padding: 12px;
   }
-  
+
   .budget-builder h2 {
     font-size: 22px;
-    margin-bottom: 18px;
-  }
-  
-  .budget-builder h3 {
-    font-size: 15px;
-    margin: 15px 0 12px 0;
-  }
-  
-  .form-group {
     margin-bottom: 15px;
   }
-  
+
+  .budget-builder h3 {
+    font-size: 15px;
+    margin: 12px 0 10px 0;
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+  }
+
   .form-group label {
     font-size: 14px;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
   }
-  
+
   .form-group input {
     font-size: 14px;
     padding: 10px;
   }
-  
+
   .categories-section {
-    padding: 12px;
+    padding: 10px;
   }
-  
+
   .allocation-status {
     font-size: 13px;
     padding: 10px;
-    margin: 15px 0;
+    margin: 12px 0;
   }
-  
+
   .submit-btn {
     font-size: 15px;
-    padding: 12px;
+    padding: 11px;
   }
 }
 
 @media (max-width: 360px) {
+  .budget-builder {
+    padding: 10px;
+  }
+
   .budget-builder h2 {
     font-size: 20px;
   }
-  
+
   .form-group label {
     font-size: 13px;
   }
-  
+
   .form-group input {
     font-size: 13px;
+    padding: 9px;
   }
-  
+
   .submit-btn {
     font-size: 14px;
+    padding: 10px;
   }
 }

@@ -199,7 +199,7 @@ function Dashboard() {
       </div>
 
       <footer className="app-footer">
-        <p>Built with ❤️ using MERN Stack</p>
+        <p>All Rights Reserved 2026</p>
       </footer>
     </div>
   );
